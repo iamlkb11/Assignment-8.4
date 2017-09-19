@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html><!-- Head of the Root -->
+	<head><!-- child sub root of the html tag as head tag  -->
+	<!-- it is a title tag -->
+	<title>Jumbotrons.</title>
+		<style type="text/css">
+		/*Applying basic style to h1 and body contents*/
+		
+			body
+			{
+				font-size: 18px;
+				font-family: sans-serif;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			/*For creating the spinner arc*/
+			.spinner
+			{
+				width: 80px;
+				height: 80px;
+				border: 2px solid #f3f3f3;
+				border-top: 3px solid #f25a41;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				border-radius: 100%;
+				animation: spin 1s infinite linear;
+			}
+			/*This will rotate the arc from 0 to 360 degrees*/
+			@keyframes spin
+			{
+				from
+				{
+					transform: 
+					rotate(0deg);
+				}
+				to
+				{
+					transform: 
+					rotate(360deg);
+				}
+			}
+			/*Pre loader css*/
+			#overlay
+			{
+				height: 100%;
+				width: 100%;
+				background:rgba(0,0,0,.8);
+				position: fixed;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	
+		<meta charset="utf-8">
+  
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+	
+    	<!--pre loader div -->
+		<div id="overlay">
+			<div class="spinner">
+			</div>
+		</div>
+		
+		<!--Actual contents div using Jumbotron -->
+		<div class="container">
+  			<div class="jumbotron">
+    			<div id="contents">
+    				<p id="p1">It's Jumbotron.</p>      
+    			</div>
+  			</div>
+  
+ 			<div style="text-align: center;">
+ 				<button class="btn1">Hide Content</button>
+ 				<button class="btn2">Show Content</button>
+ 				<button class="btn3">Change size and colour</button> 
+			</div>
+		</div>
+			
+			<script type="text/javascript">
+			//fetches the loader
+			var overlay=document.getElementById("overlay");
+			//ensures that once the timeout of 2 seconds completes, it will hide the preloader
+			window.addEventListener('load',setTimeout(function(){ overlay.style.display = 'none'; }, 2000))
+			//Jquery methods to hide,show and increase the font size along with its font color
+			$(document).ready(function()
+				{
+    			$(".btn1").click(function()
+    			{
+        		$("#contents").hide();
+    			});
+    			$(".btn2").click(function()
+    			{
+        			$("#contents").show();
+    			});
+     			$(".btn3").click(function()
+     			{
+        			$("#contents").css({"color": "red"});
+        			$("#p1").css({"font-size": "50px"});
+        			$("#p2").css({"font-size": "50px"});
+    			});
+			});
+			</script>
+	</body>
+</html>
